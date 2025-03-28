@@ -1,0 +1,9 @@
+@use './variables' as *;
+
+// _flexbox.scss
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: $padding;
+}

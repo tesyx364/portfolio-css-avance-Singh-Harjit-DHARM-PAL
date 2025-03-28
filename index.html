@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mon Portfolio - DHARM PAL Harjit</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>DHARM PAL Harjit - B1DEV</h1>
+    <nav>
+      <ul>
+        <li><a href="#presentation">Présentation</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="presentation" class="section">
+    <h2 class="animated-title">Présentation</h2>
+    <p>Bienvenue sur mon portfolio. Je suis un étudiant en développement web passionné par la création de sites modernes et interactifs.</p>
+  </section>
+
+  <section id="competences" class="section">
+    <h2 class="animated-title">Compétences</h2>
+    <ul>
+      <li>HTML / CSS</li>
+      <li>JavaScript</li>
+      <li>React</li>
+      <li>Node.js</li>
+    </ul>
+  </section>
+
+  <section id="projets" class="section">
+    <h2 class="animated-title">Projets</h2>
+    <div class="project">
+      <h3>Site Web Personnel</h3>
+      <p>Création d'un site responsive pour me présenter et afficher mes projets.</p>
+    </div>
+    <button id="openModal">Voir plus</button>
+  </section>
+
+  <section id="contact" class="section">
+    <h2 class="animated-title">Contact</h2>
+    <p>Email: harjitharjit661@gmail.com</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Mon Portfolio - DHARM PAL Harjit</p>
+  </footer>
+
+  <!-- Modale -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Mon projet en détail</h2>
+      <p>Voici des informations supplémentaires sur ce projet passionnant.</p>
+
+      <ul>
+        <li>Site responsive (mobile / tablette / desktop)</li>
+        <li>Navigation fluide avec scroll animé</li>
+        <li>Animations au survol des projets</li>
+        <li>Modale d’informations détaillées</li>
+      </ul>
+      
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const modal = document.getElementById("myModal");
+      const openModal = document.getElementById("openModal");
+      const closeModal = document.querySelector(".close-button");
+
+      openModal.addEventListener("click", () => modal.classList.add("show"));
+      closeModal.addEventListener("click", () => modal.classList.remove("show"));
+
+      window.addEventListener("click", (e) => {
+        if (e.target === modal) modal.classList.remove("show");
+      });
+
+      // Scroll animation
+      const sections = document.querySelectorAll(".section");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, { threshold: 0.1 });
+
+      sections.forEach((section) => {
+        section.classList.add("hidden");
+        observer.observe(section);
+      });
+    });
+  </script>
+
+    
+</body>
+</html>
+
+
+
+  
+
+
+
