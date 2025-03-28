@@ -6,6 +6,7 @@
 
     openModal.addEventListener("click", () => modal.classList.add("show"));
     closeModal.addEventListener("click", () => modal.classList.remove("show"));
+
     window.addEventListener("click", (e) => {
       if (e.target === modal) modal.classList.remove("show");
     });
@@ -21,18 +22,19 @@
     }, { threshold: 0.1 });
 
     sections.forEach((section) => {
-      section.classList.add("hidden");
       observer.observe(section);
+    });
+
+    // Parallax scroll
+    document.addEventListener("scroll", () => {
+      document.querySelectorAll(".parallax").forEach((el) => {
+        const speed = el.dataset.speed;
+        el.style.transform = `translateY(${window.scrollY * speed}px)`;
+      });
     });
   });
 </script>
 
-document.addEventListener("scroll", () => {
-    document.querySelectorAll(".parallax").forEach((el) => {
-      const speed = el.dataset.speed;
-      el.style.transform = `translateY(${window.scrollY * speed}px)`;
-    });
-  });
   
 
 

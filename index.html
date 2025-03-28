@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mon Portfolio - DHARM PAL Harjit</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
 <body>
   <header class="header">
@@ -65,7 +70,6 @@
         <li>Animations au survol des projets</li>
         <li>Modale d’informations détaillées</li>
       </ul>
-      
     </div>
   </div>
 
@@ -78,17 +82,31 @@
 
       openModal.addEventListener("click", () => modal.classList.add("show"));
       closeModal.addEventListener("click", () => modal.classList.remove("show"));
-
       window.addEventListener("click", (e) => {
         if (e.target === modal) modal.classList.remove("show");
       });
 
-      // Scroll animation
+      // Animation au scroll
       const sections = document.querySelectorAll(".section");
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
+
+            switch (entry.target.id) {
+              case "presentation":
+                entry.target.classList.add("fade-in-left");
+                break;
+              case "competences":
+                entry.target.classList.add("fade-in-right");
+                break;
+              case "projets":
+                entry.target.classList.add("fade-in-up");
+                break;
+              case "contact":
+                entry.target.classList.add("slide-fade");
+                break;
+            }
           }
         });
       }, { threshold: 0.1 });
@@ -99,10 +117,9 @@
       });
     });
   </script>
-
-    
 </body>
 </html>
+
 
 
 
